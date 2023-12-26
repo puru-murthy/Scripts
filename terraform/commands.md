@@ -16,6 +16,10 @@ terraform fmt
 
 terraform plan
 
++ create: A new resource will be created.
+~ update in-place: An existing resource will be updated in-place.
+- destroy: An existing resource will be destroyed
+
 # updates the state file with the real-worlds infrastructure's current state
 
 terraform refresh
