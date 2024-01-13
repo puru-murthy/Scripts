@@ -8,7 +8,7 @@ The Key components of master node:
 3. Control Manager
 4. Scheduler
 
-The Key components of worked node:
+The Key components of worker nodes:
 
 1. kubectl:
 2. Ingress controller:
