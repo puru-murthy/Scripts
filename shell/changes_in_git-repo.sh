@@ -18,7 +18,7 @@ git clone "$REPO_URL" || {
 
 # Move into the cloned repository
 
-cd Kubernetes/
+cd /c/Puru/Github/DevOps/Kubernetes
 FILE_PATH="deployment.yaml"
 OLD_IMAGE="image: simpleimage/argocd-app:1.1"
 NEW_IMAGE="image: simpleimage/argocd-app:1.2"
