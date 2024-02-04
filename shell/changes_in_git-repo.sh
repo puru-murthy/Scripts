@@ -1,13 +1,20 @@
 #!/bin/bash
 
-# log into Github 
-
-REPO_URL="https://github.com/puru-murthy/DevOps.git"
-
-# User name and pwd
+# Git credentials 
 
 USER_NAME="pmurthy0604"
-PASSWORD="1Puru_suji"
+REPO_NAME="DevOps"
+
+# Prompt user for GitHub password
+read -s -p "Enter GitHub password for $USERNAME: " PASSWORD
+echo
+
+# log into Github
+
+REPO_URL="https://github.com/puru-murthy/$REPO_NAME.git"
+
+# if already cloned remote the repo
+rm -rf $REPO_NAME
 
 # Clone the repository using HTTPS URL
 
@@ -18,11 +25,25 @@ git clone "$REPO_URL" || {
 
 # Move into the cloned repository
 
-cd /c/Puru/Github/DevOps/Kubernetes
-FILE_PATH="deployment.yaml"
-OLD_IMAGE="image: simpleimage/argocd-app:1.1"
-NEW_IMAGE="image: simpleimage/argocd-app:1.2"
+cd "$REPO_NAME" || exit 1
+# Switch to the main branch
+git checkout main || exit 1
+
+FILE_PATH="Kubernetes/deployment.yaml"
+OLD_IMAGE="yourapp"
+NEW_IMAGE="myapp"
 
 sed -i "s|$OLD_IMAGE|$NEW_IMAGE|g" "$FILE_PATH"
 
 echo "Replacement completed in $FILE_PATH"
+
+# Stage the changes
+git add "$FILE_PATH"
+
+# Commit the changes
+git commit -m "Update image in deployment.yaml"
+
+# Push the changes to the remote repository
+git push origin main
+
+echo "Changes pushed to the remote repository"
