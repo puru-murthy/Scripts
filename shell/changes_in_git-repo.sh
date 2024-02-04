@@ -1,17 +1,17 @@
 #!/bin/bash
 
 # Git credentials 
-
-USER_NAME="pmurthy0604"
+REPO_LINK="https://github.com/puru-murthy/"
 REPO_NAME="DevOps"
 
-# Prompt user for GitHub password
+# Prompt user for GitHub username & password
+read -p "Enter GitHub username: " USERNAME
 read -s -p "Enter GitHub password for $USERNAME: " PASSWORD
 echo
 
 # log into Github
 
-REPO_URL="https://github.com/puru-murthy/$REPO_NAME.git"
+REPO_URL="$REPO_LINK$REPO_NAME.git"
 
 # if already cloned remote the repo
 rm -rf $REPO_NAME
@@ -26,6 +26,7 @@ git clone "$REPO_URL" || {
 # Move into the cloned repository
 
 cd "$REPO_NAME" || exit 1
+
 # Switch to the main branch
 git checkout main || exit 1
 
